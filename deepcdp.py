@@ -1,6 +1,8 @@
-import matplotlib.pyplot as plt
+## Copyright: Siddarth Achar
+## University of Pittsburgh
+
+
 import numpy as np
-import os
 import dscribe
 from ase.build import molecule
 from dscribe.descriptors import SOAP
@@ -10,7 +12,6 @@ import time
 import pickle
 from ase.io.cube import read_cube, write_cube
 from sklearn.metrics import explained_variance_score, mean_squared_error
-import os
 import py3Dmol
 
 class deepcdp:
