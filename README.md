@@ -1,4 +1,4 @@
-# deepcdp
+# DeepCDP
 DeepCDP: Deep learning Charge Density Prediction. 
 
 
