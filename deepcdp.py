@@ -17,6 +17,9 @@ import py3Dmol
 class deepcdp:
     
     def __init__(self, soap_def):
+        '''
+        An instance of deepcdp would have one constant function, which is the SOAP function (soap_def). Any model that is trained using data generated an instance of deepcdp will only work on data that is generated from this definition of soap.  
+        '''
              
         self.soap_def=soap_def
     
