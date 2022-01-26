@@ -158,6 +158,7 @@ class deepcdp:
             if j == 0:
                 ase_atoms_sample.set_positions([*center])
                 soap_vec = self.soap_def.create(ase_atoms_sample, positions=self.box)
+                print('SOAP is of dimension:',soap_vec.shape)
                 X_train = soap_vec
                 j = 1
             rho += rho_i # List addition
