@@ -115,7 +115,7 @@ class deepcdp:
         '''
         Function that takes in cube files and converts then to xyz files.
         '''
-        dictCube_test = read_cube(open(cubepath))   #Reads to a dict
+        dictCube_test = read_cube(cubepath)   #Reads to a dict
         center_test = dictCube_test['atoms']     #Atom centers from ase Atoms format
         write(outpath,center_test,format='xyz')
         
@@ -144,7 +144,7 @@ class deepcdp:
         j=0
         for i in samp:
             print(f'Read file: {Cubefile_lambda(i)}')
-            dictCube = read_cube(open(Cubefile_lambda(i)))           #Reads to a dict
+            dictCube = read_cube(Cubefile_lambda(i))           #Reads to a dict
             center = dictCube['atoms'].get_positions()   # Atom centers from ase Atoms format
             rho_inter = dictCube['data']
             rho_i_trim=rho_inter.ravel().reshape(-1,1)                                                    #Flattening the 3D matrix of densities
@@ -166,17 +166,14 @@ class deepcdp:
         self.trainX=X_train
         self.trainY=rho
         
-        
         if savedata_path is not None:
             np.savetxt(f'{savedata_path}/trainingX.dat', X_train)
             np.savetxt(f'{savedata_path}/trainingY.dat', rho)
-
-        return X_train, rho
     
 
     def test_1cube_full_box(self, Cubefile, model, save_pred_path=None):
         
-        dictCube_test = read_cube(open(Cubefile))                #Reads to a dict
+        dictCube_test = read_cube(Cubefile)                #Reads to a dict
         center_test = dictCube_test['atoms']   # Atom centers from ase Atoms format
         rho_test = dictCube_test['data']
         rho_test = rho_test.ravel().reshape(-1,1)
