@@ -109,7 +109,95 @@ class deepcdp:
                     box.append((x,y,z))
         self.box=box
 
-#         return box
+    def create_box_universal(self, bounds=None, cell_spacing=None, gamma=None, sample_cubeFile=None, stepX=1, stepY=1, stepZ=1):
+        '''
+        This function generates the grid points in a box based on the shape of the cell
+        that is defined. The function in NOT generalized to ALL cell shapes. The input 
+        parameters are:
+        gamma: Gamma angle formed
+        *All s*_b denote lattice/ cell parameters. Input in Angstroms*
+        s11_b: XX
+        s21_b: XY
+        s22_b: YY
+        s33_b: ZZ
+        x_ini: Initial X (number of points) 
+        x_fin: Final X
+        y_ini: Initial Y
+        y_fin: Final Y
+        z_ini: Initial Z
+        z_fin: Final Z
+        stepX: Steps along X direction. Used to reduce number of grid points
+        stepY: Steps along Y direction
+        stepZ: Steps along Z direction
+
+        TODO: Write a FULLY generalized function to read 
+
+        '''
+        if sample_cubeFile is not None:
+            bounds, self.cell_spacing=deepcdp.get_NoPoints_spacing_matrix(sample_cubeFile)
+            self.bounds=bounds
+            x_fin, y_fin, z_fin=self.bounds
+            x_ini, y_ini, z_ini=[0,0,0]
+            s11_b=self.cell_spacing[0,0]
+            s21_b=self.cell_spacing[1,0]
+            s22_b=self.cell_spacing[1,1]
+            s33_b=self.cell_spacing[2,2]
+            if gamma==None:
+                print('pass gamma (in degrees) as arg in function')
+                exit
+            # Here bounds include the entire box. If you need smaller cell, then define by yourself
+        else:
+            self.bounds=bounds
+            x_ini, x_fin=self.bounds[0]
+            y_ini, y_fin=self.bounds[1]
+            z_ini, z_fin=self.bounds[2]
+            gamma, s11_b, s21_b, s22_b, s33_b = self.cell_spacing
+
+        # Extract the lattice vectors from the cell
+        a = cell[0]
+        b = cell[1]
+        c = cell[2]
+        
+        # Determine the number of grid points in each direction
+        num_a = int(np.linalg.norm(a) / spacing) + 1
+        num_b = int(np.linalg.norm(b) / spacing) + 1
+        num_c = int(np.linalg.norm(c) / spacing) + 1
+        
+        # Generate the grid points
+        grid_points = []
+        for i in range(num_a):
+            for j in range(num_b):
+                for k in range(num_c):
+                    grid_point = i * a / num_a + j * b / num_b + k * c / num_c
+                    grid_points.append(grid_point)
+        
+        # Convert the list of grid points to a numpy array
+        grid_points = np.array(grid_points)
+
+        
+        gamma_rad = np.pi*gamma/180
+        Bohr2Ang = 0.529177
+        s11 = s11_b * Bohr2Ang
+        s21 = s21_b * Bohr2Ang
+        s22 = s22_b * Bohr2Ang
+        s33 = s33_b * Bohr2Ang
+
+        sinGamma = np.sin(gamma_rad)
+        cosGamma = np.cos(gamma_rad)
+        s_sqrt = np.sqrt(s21**2 + s22**2)  # Look at the equation
+
+        # TODO: Is there a more general expression for this?
+        box = []
+
+        for i in np.arange(x_ini,x_fin,stepX):
+            for j in np.arange(y_ini,y_fin,stepY):
+                for k in np.arange(z_ini,z_fin,stepZ):
+                    x = i*s11 + s_sqrt*cosGamma*j     #Had to change the cos to sin
+                    y = s_sqrt*sinGamma*j             #Had to change the sin to cos
+                    z = k*s33
+                    box.append((x,y,z))
+        self.box=box
+
     
     def cube2xyz(self, cubepath, outpath):
         '''
