@@ -2,4 +2,14 @@ Device:  mps
 True
 True
 [1900, 1500, 50, 800, 400, 1700, 450, 1050, 350, 2000, 100, 550, 1650, 0, 300]
+Read file: data/water5/h2o-ELECTRON_DENSITY-1_300.cube
+SOAP is of dimension: (68921, 180)
 Read file: data/water5/h2o-ELECTRON_DENSITY-1_450.cube
+Read file: data/water5/h2o-ELECTRON_DENSITY-1_50.cube
+Read file: data/water5/h2o-ELECTRON_DENSITY-1_550.cube
+Read file: data/water5/h2o-ELECTRON_DENSITY-1_2000.cube
+Read file: data/water5/h2o-ELECTRON_DENSITY-1_800.cube
+Read file: data/water5/h2o-ELECTRON_DENSITY-1_400.cube
+Read file: data/water5/h2o-ELECTRON_DENSITY-1_100.cube
+Read file: data/water5/h2o-ELECTRON_DENSITY-1_1050.cube
+Read file: data/water5/h2o-ELECTRON_DENSITY-1_1650.cube
