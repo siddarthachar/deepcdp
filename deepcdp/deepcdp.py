@@ -81,10 +81,15 @@ class deepcdp:
             # Here bounds include the entire box. If you need smaller cell, then define by yourself
         else:
             self.bounds=bounds
+            self.cell_spacing = cell_spacing
             x_ini, x_fin=self.bounds[0]
             y_ini, y_fin=self.bounds[1]
             z_ini, z_fin=self.bounds[2]
-            gamma, s11_b, s21_b, s22_b, s33_b = self.cell_spacing
+            s11_b=self.cell_spacing[0,0]
+            s21_b=self.cell_spacing[1,0]
+            s22_b=self.cell_spacing[1,1]
+            s33_b=self.cell_spacing[2,2]
+            # gamma, s11_b, s21_b, s22_b, s33_b = self.cell_spacing
         
         gamma_rad = np.pi*gamma/180
         Bohr2Ang = 0.529177
