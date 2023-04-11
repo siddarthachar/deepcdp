@@ -1,0 +1,5 @@
+Device:  mps
+True
+True
+[1900, 1500, 50, 800, 400, 1700, 450, 1050, 350, 2000, 100, 550, 1650, 0, 300]
+Read file: data/water5/h2o-ELECTRON_DENSITY-1_450.cube
