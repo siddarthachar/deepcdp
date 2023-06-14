@@ -1,7 +1,9 @@
 # DeepCDP
 DeepCDP: Deep learning Charge Density Prediction
 
-Code and examples for predicting electron density of atomistic systems using NNs. This work is based on our paper ["Machine Learning Electron Density Prediction Using Weighted Smooth Overlap of Atomic Positions"](https://www.mdpi.com/2079-4991/13/12/1853#). 
+[![DOI](https://img.shields.io/badge/DOI-10.3390%2Fnano13111793-blue)](https://doi.org/10.3390/nano13111793)
+
+Code and examples for predicting electron density of atomistic systems using NNs. This work is based on our paper ["Machine Learning Electron Density Prediction Using Weighted Smooth Overlap of Atomic Positions"](https://doi.org/10.3390/nano13111793). 
 
 ## Paper Abstract
 Having access to accurate electron densities in chemical systems, especially for dynamical systems involving chemical reactions, ion transport, and other charge transfer processes, is crucial for numerous applications in materials chemistry. Traditional methods for computationally predicting electron density data for such systems include quantum mechanical (QM) techniques, such as density functional theory. However, poor scaling of these QM methods restricts their use to relatively small system sizes and short dynamic time scales. To overcome this limitation, we have developed a deep neural network machine learning formalism, which we call deep charge density prediction (DeepCDP), for predicting charge densities by only using atomic positions for molecules and condensed phase (periodic) systems. Our method uses the weighted smooth overlap of atomic positions to fingerprint environments on a grid-point basis and map it to electron density data generated from QM simulations. %please confirm intended meaning has been retained with punctuation
@@ -53,7 +55,7 @@ VOLUME = {13},
 YEAR = {2023},
 NUMBER = {12},
 ARTICLE-NUMBER = {1853},
-URL = {https://www.mdpi.com/2079-4991/13/12/1853},
+URL = {https://doi.org/10.3390/nano13111793},
 ISSN = {2079-4991},
 DOI = {10.3390/nano13121853}
 }
