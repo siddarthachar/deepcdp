@@ -55,7 +55,7 @@ VOLUME = {13},
 YEAR = {2023},
 NUMBER = {12},
 ARTICLE-NUMBER = {1853},
-URL = {https://doi.org/10.3390/nano13111793},
+URL = {https://doi.org/10.3390/nano13121853},
 ISSN = {2079-4991},
 DOI = {10.3390/nano13121853}
 }
